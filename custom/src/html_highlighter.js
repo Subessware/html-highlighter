@@ -1117,11 +1117,11 @@
      * <p>Highlight a <code>Range</code> instance.</p>
      *
      * @param {Range} range - Range instance to apply highlighting to.
-     * @returns {number} Unique highlight id. 
+     * @returns {number} Unique highlight id. */
     this.do = function (range) {
       range.surround(classes + " " + Css.highlight + "-id-" + id);
       return id++;
-    };*/
+    };
   };
 
 

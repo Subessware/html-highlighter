@@ -231,7 +231,7 @@
   Main.prototype.getSelectedRange = function ()
   {
     var sel = window.getSelection(), len;
-
+	this.content = new TextContent(window.getSelection().anchorNode.parentElement);
     /* Note: assigning `len´ in conditional below so as to simplify code;
      * would require additional lines of code otherwise. */
     if(!(sel && sel.anchorNode && (len = sel.toString().length) > 0))
@@ -241,39 +241,46 @@
       return null;
     }
 
-    /* Determine start and end indices in text offset markers array. */
-    var start = this.content.find(sel.anchorNode),
-        end = (sel.focusNode === sel.anchorNode
-               ? start : this.content.find(sel.focusNode));
+	if (sel.focusNode != sel.anchorNode) {
+		alert("overlap");
+	}else {
+		/* Determine start and end indices in text offset markers array. */
+		var start = this.content.find(sel.anchorNode),
+			end = (sel.focusNode === sel.anchorNode
+				   ? start : this.content.find(sel.focusNode));
+		/*var start = sel.anchorOffset,
+			end =  sel.extentOffset;*/
 
-    if(start < 0 || end < 0) {
-      console.error("Unable to retrieve offset of selection anchor or focus"
-                    + "node(s)", sel.anchorNode, sel.focusNode);
-      return null;
-    }
+		if(start < 0 || end < 0) {
+		  console.error("Unable to retrieve offset of selection anchor or focus"
+						+ "node(s)", sel.anchorNode, sel.focusNode);
+		  return null;
+		}
 
-    /* Create start and end range descriptors, whilst accounting for inverse
-     * selection where the user selects text in a right to left orientation. */
-    if(start < end || (start === end && sel.anchorOffset < sel.focusOffset)) {
-      start = Range.descriptorRel(this.content.at(start), sel.anchorOffset);
+		/* Create start and end range descriptors, whilst accounting for inverse
+		 * selection where the user selects text in a right to left orientation. */
+		if(start < end || (start === end && sel.anchorOffset < sel.focusOffset)) {
+		  start = Range.descriptorRel(this.content.at(start), sel.anchorOffset);
 
-      if(sel.focusNode === sel.anchorNode) {
-        end = $.extend(true, { }, start);
-        end.offset = start.offset + len - 1;
-      } else
-        end = Range.descriptorRel(this.content.at(end), sel.focusOffset - 1);
-    } else {
-      var mi = start;
-      start = Range.descriptorRel(this.content.at(end), sel.focusOffset);
+		  if(sel.focusNode === sel.anchorNode) {
+			end = $.extend(true, { }, start);
+			end.offset = start.offset + len - 1;
+		  } else
+			end = Range.descriptorRel(this.content.at(end), sel.focusOffset - 1);
+		} else {
+		  var mi = start;
+		  start = Range.descriptorRel(this.content.at(end), sel.focusOffset);
 
-      if(sel.focusNode === sel.anchorNode) {
-        end = $.extend(true, { }, start);
-        end.offset = end.offset + len - 1;
-      } else
-        end = Range.descriptorRel(this.content.at(mi), sel.anchorOffset - 1);
-    }
+		  if(sel.focusNode === sel.anchorNode) {
+			end = $.extend(true, { }, start);
+			end.offset = end.offset + len - 1;
+		  } else
+			end = Range.descriptorRel(this.content.at(mi), sel.anchorOffset - 1);
+		}
 
-    return new Range(this.content, start, end);
+		return new Range(this.content, start, end);
+	}
+    
   };
 
   /**
@@ -1452,7 +1459,7 @@
     while(true) {
       while(node.previousSibling === null) {
         node = node.parentNode;
-        if(node === this.root || node === null)
+        if(node === null)
           throw "Invalid state: expected highlight container or text node";
         else if(!this.isHighlight_(node))
           return offset;

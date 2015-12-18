@@ -6,49 +6,20 @@
  *
  */
 
-
+require( [ 'js/ner' ] );
 (function (factory, window) {
-
   window.require( [ 'jquery', 'src/html_highlighter' ], function ($, hh) {
     return factory(window, $, hh);
-  } );
+  } 
+ 
+  );
 
 }(function (window, $, hh, undefined) {
 
   var MAX_HIGHLIGHT = 12;
 
-  var dataBaseUrl = 'data/',
-      dataSources = [ {
-        name: 'Viber hacked',
-        url: 'viber_attacked_by_syrian_electronic_army.json'
-      }, {
-        name: 'Viber hacked -- cropped',
-        url: 'viber_attacked_by_syrian_electronic_army-cropped.json'
-      }, {
-        name: 'Ars Technica',
-        url: 'ars_technica.json'
-      }, {
-        name: 'Simple',
-        url: 'simple.json'
-      }, {
-        name: 'Spaces',
-        url: 'spaces.json'
-      }, {
-        name: 'One paragraph',
-        url: 'one_paragraph.json'
-      }, {
-        name: 'One paragraph with ampersand',
-        url: 'one_paragraph-ampersand.json'
-      }, {
-        name: 'One paragraph with escaped ampersand',
-        url: 'one_paragraph-ampersand_escaped.json'
-      }, {
-        name: 'One paragraph with nonexistent ampersand',
-        url: 'one_paragraph-ampersand_nonexistent.json'
-      } ];
-
   var elSelector = $('#filter-data'),
-      elDocument = $('#document'),
+      elDocument = $(".sentence"),
       elWidgetSelection = $('#widget-selection'),
       elWidgetMain = $('#widget-main'),
       elSearch = $('#search'),
@@ -72,36 +43,47 @@
 
     var timeout = null;
     elDocument.on( {
+		
       dblclick: function () { mouseDown = 0; },
       mouseup: function () {
         -- mouseDown;
-
+		count = setCount($(this));
+		var elasticSearchId = $(this).attr("elastic-search-id");
+	    var parent_id = $(this).parent().attr('id');
+	    var sentText = $(this).text().trim();
+		var encodedText = $(this).attr("tokens");
         /* Process text selection with a delay to ensure accurate results. */
         if(timeout !== null) window.clearTimeout(timeout);
         timeout = window.setTimeout(function () {
           timeout = null;
           if(mouseDown !== 0) return;
-
+			
           var range = highlighter.getSelectedRange();
           if(range === null) {
-            elWidgetSelection.removeClass('enabled');
+            console.log("null range");
             return;
           }
 
-          elWidgetSelection.find('.offset').text(
-            range.start.marker.offset
-              + '(' + range.start.offset + ')'
-              + ':' + range.end.marker.offset
-              + '(' + range.end.offset + ')');
+          
 
           var xpath = range.computeXpath();
-          elWidgetSelection.find('.xpath')
+          /*elWidgetSelection.find('.xpath')
             .text(xpath.start.xpath + ':' + xpath.start.offset
-                  + ' - ' + xpath.end.xpath + ':' + xpath.end.offset);
+                  + ' - ' + xpath.end.xpath + ':' + xpath.end.offset);*/
 
           highlight_(xpath.start, xpath.end);
           highlighter.clearSelectedRange();
-          elWidgetSelection.addClass('enabled');
+          //elWidgetSelection.addClass('enabled');
+		  
+		 /* alert(
+            range.content.root.id + "\n"
+              + 'start =' + range.start.offset + '\n'
+			+ 'end = ' + range.end.offset + '\n'
+				+ 'ES ID = ' + elasticSearchId + '\n'
+				+ 'parent id = ' +parent_id + '\n'
+				+ 'sentText = ' + sentText + '\n'
+				+ 'encodedText = ' +encodedText + '\n');*/
+				createRows(parent_id, elasticSearchId, sentText, encodedText, "hh-highlight-"+(count-1),  range.start.offset, range.end.offset);
         }, 150);
       },
       mousedown: function () {
@@ -117,17 +99,29 @@
           maxHighlight: MAX_HIGHLIGHT
         } );
 
-        load(0);
+       // load(0);
         return;
     };
 
     next(0);
   }
 
+  function setCount(selectedEl) {
+	  prev = -1;
+	  $(selectedEl).find("span[class*='hh-highlight-id']").each(function() {
+		hhclass = $(this).attr('class').split(/\s+/)[1]
+		if (hhclass != "hh-highlight-"+(prev+1)) {
+			count = prev+1;
+			return;
+		}
+		prev = prev+1;
+	  });
+	  return prev+1;
+  }
   function load(index)
   {
     highlighter.clear().apply();
-    elDocument.html(dataSources[index].content);
+    elDocument.html($(".sentence"));
     highlighter.refresh();
     elSearch.focus();
   }
@@ -153,3 +147,8 @@
   init();
 
 }, window));
+
+function createRows(parent_id, elasticSearchId, sentText, encodedText, className, start, end) {
+	
+	createTagRow(parent_id, elasticSearchId, sentText, encodedText, className, start, end);
+}

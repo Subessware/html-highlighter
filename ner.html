@@ -1,0 +1,171 @@
+
+<html><head> <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="lib/requirejs-2.1.16/requirejs.js"></script>
+<script src="js/ner.js"></script>
+<script type="text/javascript">
+   require.config( {
+     paths: {
+       'jquery': 'lib/jquery-2.1.3/jquery',
+       'SortingCommon': 'lib/sorting-common/sorting_common'
+     }
+   } );
+
+   /* Now load main. */
+   require( [ 'js/ner' ] );
+   require( [ 'js/main' ] );
+  </script>
+  <link rel="stylesheet" href="css/theme-default.css">
+
+  <!-- Template definition -->
+  <script type="text/hh-template" id="entity-row">
+    <li>
+      <input type="checkbox" data-hh-scope="enable">
+      <span class="name" data-hh-scope="name"></span>:
+      <span class="count" data-hh-scope="count"></span>
+      <span class="remove glyphicon glyphicon-remove" data-hh-scope="remove"></span>
+    </li>
+  </script>
+
+  <script type="text/hh-template" id="entity-empty">
+   <p class="empty">No query sets have been created yet</p>
+  </script>
+  
+<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"> </script> <link rel="stylesheet" type="text/css" href="https://s3-us-west-2.amazonaws.com/aisoftwareresearch/ner_html/bootstrap_assets.css"><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="https://s3-us-west-2.amazonaws.com/aisoftwareresearch/ner_html/ner.css"></head><body categories= "Working Name,Ethnicity/Nationality/Race/Origin"><div class="container"><div class=""><div class="page-header">	<h1>Label working name, ethnicity/nationality/race/origin in free text</h1>	</div><!-- ##begin## -->
+<div class="container">
+
+<div class="">
+<h2>Instructions</h2>
+<div class="lead">
+<p class="lead">Your task is to mark up each of the sentences so that they look like the example below. 
+<p class="text-danger">
+Note: This HIT only works on Chrome and Safari</p>
+</p>        
+</div>
+</div>
+
+
+<!-- Instructions -->
+
+<div class="bs-callout bs-callout-warning">
+<div class="panel panel-warning">
+  <div class="panel-heading"><h1 class="panel-title">Example Sentence</h1>
+  </div>
+  <div class="panel-body">
+   <!-- STEP 1: Change the occurrences of "change me X" in this paragraph to indicate positive examples in your domain.
+-->
+   <p class="text-muted">Lorem <span class="highlight_8">French</span> ipsum dolor sit amet, <span class="highlight_6">Jacqueline</span> consectetur adipiscing te graece utroque nusquam mea, mei. Odio <span class="highlight_10">Caucasian</span> nostrud mollit anim id est laborum <span class="highlight_11">Princess</span> posidonium. </p>
+
+
+<!-- STEP 2: In the rows below, change each "change me X" to correspond to the same text as in the preceding paragraph-->
+<div class="top-buffer row">
+  <div class="col-xs-4 col-md-3"><span class="glyphicon glyphicon-triangle-right"></span><span class="highlight_8">French</span>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+  <label class="radio-inline">
+  <!-- STEP 3: In each of the rows below, replace "Category 1,2" etc. with the categories from your extractor
+-->
+  <!-- STEP 4: For each row below, if the Category matches the example, add 'checked="checked"' at the end of the <input> tag; otherwise remove 'checked='"checked".
+-->
+
+  <input type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">Working Name
+  </label>
+  
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1" checked="checked">Ethnicity/Nationality/Race/Origin
+  </label>
+</div>
+
+  <div class="col-xs-1 col-md-1"><button class="deleteBtn glyphicon glyphicon-remove" name="deleteTag" disabled></button>
+  </div>
+
+</div> <!-- row -->
+
+<div class="top-buffer row">
+  <div class="col-xs-4 col-md-3"><span class="glyphicon glyphicon-triangle-right"></span><span class="highlight_6">Jacqueline</span>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option1" checked="checked">Working Name
+  </label>
+  
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option1">Ethnicity/Nationality/Race/Origin
+  </label>
+</div>
+
+  <div class="col-xs-1 col-md-1"><button class="deleteBtn glyphicon glyphicon-remove" name="deleteTag" disabled></button>
+  </div>
+
+</div> <!-- row -->
+
+<div class="top-buffer row">
+  <div class="col-xs-4 col-md-3"><span class="glyphicon glyphicon-triangle-right"></span><span class="highlight_10">Caucasian</span>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option1">Working Name
+  </label>
+  
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option1" checked="checked">Ethnicity/Nationality/Race/Origin
+  </label>
+  
+</div>
+
+  <div class="col-xs-1 col-md-1"><button class="deleteBtn glyphicon glyphicon-remove" name="deleteTag" disabled></button>
+  </div>
+
+</div> <!-- row -->
+
+<div class="top-buffer row">
+  <div class="col-xs-4 col-md-3"><span class="glyphicon glyphicon-triangle-right"></span><span class="highlight_11">Princess</span>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions4" id="inlineRadio4" value="option1" checked="checked">Working Name
+  </label>
+  
+  <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions4" id="inlineRadio4" value="option1">Ethnicity/Nationality/Race/Origin
+  </label>
+  
+</div>
+
+  <div class="col-xs-1 col-md-1"><button class="deleteBtn glyphicon glyphicon-remove" name="deleteTag" disabled></button>
+  </div>
+
+</div> <!-- row -->
+
+
+
+
+<div class="top-buffer row">
+<div class="col-xs-11 col-md-12 checkbox">
+  <label class="radio-inline">
+  <input type="checkbox" name="inlineRadioOptions5" id="inlineRadio5" value="option1">No annotations
+  </label>
+</div>
+</div> <!-- row -->
+
+
+</div> <!--panel body-->
+<!-- STEP 5: Make these two Categories correspond to the categories from your model. -->
+<div class="panel-footer">Markup descriptions of  
+<span class="text-danger">Working Name</span>,
+<span class="text-danger">Ethnicity/Nationality/Race/Origin</span>
+</div>
+
+</div><!--panel-->
+</div>
+
+<!-- End instructions -->
+
+<!-- ##end## -->
+<form id="mturk_form" method="POST" action="https://www.mturk.com/mturk/externalSubmit"><input type="hidden" id="assignmentId" name="assignmentId" value=""><h2>Mark Up the Following Sentences</h2><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 1</h1></div><div class="panel-body" id="container_1">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/95E741D3F0154CE6DA6480004ED9CB0B0EB87F8B" tokens="SGkJZ3V5cwlteQluYW1lCWlzCW1vbGx5CWFuZAlJCWFtCVBhc3Npb25hdGUJYW5kCXNlZHVjdGl2ZQlidXQJbW9zdAlvZglhbGwJSQlsb3ZlCXRvCWhhdmUJRnVuCSEJSQknCW0JdmVyeQlzZW5zaXRpdmUJYW5kCWxvdmUJdGhlCXNpbXBsZQl0b3VjaAlvZglhCW1hbgknCXMJaGFuZAlvbglteQlza2luCS4JSXQJJwlzCW15CWdlbnVpbmUJZGVzaXJlCXRvCWNvbm5lY3QJd2l0aAl5b3UJb24JYQlwZXJzb25hbAkmbHQ7YQl0YXJnZXQ9Il9ibGFuayIJaHJlZj0iaHR0cDovL2xldmVsLmlmLyIJJmd0OwlsZXZlbAkuCUlmCSZsdDsvYSZndDsJeW91CScJcmUJbG9va2luZwlmb3IJYQl0cnVlCVZJUAlDb21wYW5pb24JLAlzb21lb25lCXdobwlpcwl1bmlxdWVseQlkaWZmZXJlbnQJZnJvbQl0aGUJcmVzdAksCXRoZW4JbG9vawlubwlmdXJ0aGVyCS4JTGV0CW1lCWFzc3VyZQl5b3UJLAlJCScJbQl3aWRlbHkJc2VkdWN0aXZlCSwJcGxheWZ1bAlhbmQJaGlnaGx5CXNlbnN1YWwJLglJCXN0cml2ZQl0bwljcmVhdGUJZnJpZW5kc2hpcHMJbglteQlwaWNzCWFyZQkxMDAJJQlyZWFsCWNhbGxzCW9ubHkJbm8JdGV4dGluZwlwbGVhc2U=" id="sentence_1">Hi guys my name is molly and I am Passionate and seductive but most of all I love to have Fun ! I ' m very sensitive and love the simple touch of a man ' s hand on my skin . It ' s my genuine desire to connect with you on a personal &lt;a target="_blank" href="http://level.if/" &gt; level . If &lt;/a&gt; you ' re looking for a true VIP Companion , someone who is uniquely different from the rest , then look no further . Let me assure you , I ' m widely seductive , playful and highly sensual . I strive to create friendships n my pics are 100 % real calls only no texting please</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_1" elastic-search-id= "http://dig.isi.edu/sentence/95E741D3F0154CE6DA6480004ED9CB0B0EB87F8B">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 2</h1></div><div class="panel-body" id="container_2">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/FD3910F08DFD586BFFDF8FB5A2140AD0ED48B011" tokens="SGV5CWZlbGxhcwlteQluYW1lCWlzCUJyaWFubmEJJmx0O2JyCSZndDsJSQknCW0JaGF2aW5nCXByb2JsZW1zCVdpdAl0aGVzZQlicm9rZQliaXRjaGVzCXRha2luCW15CXBpY3R1cmVzCUl0CScJcwlmdW5ueQliZWN1egl0aGV5CWNhbgluZXZlcgliZQltZQkmbHQ7YnIJJmd0OwlDb21lCWFuZAlleHBlcmllbmNlCXRoZQl1bHRpbWF0ZQlwbGVhc3VyZQl3aXRoCU1FCSEJJmx0O2JyCSZndDsJSQlhbQlmcmllbmRseQksCXZlcnkJcGxheWZ1bAkmYW1wOwlleHRyYQluYXVnaHR0eXkJJmx0O2JyCSZndDsJU3RvcAl3YXN0aW5nCXRpbWUJdwkvCXRoZQlyZXN0CSwJY2FsbAl0aGUJYmVzdAkhCcOjCSZsdDticgkmZ3Q7CSZsdDticgkmZ3Q7CcOiCSEJRm9yCXRob3NlCW9mCXlvdQl3aG8Jc2Vlawl0aGUJY29tcGxldGUJcGFja2FnZQlvZgliZWF1dHkJLAljbGFzcwksCWFuZAljaGFybQkuCS4JLgkmbHQ7YnIJJmd0OwlUaGVuCUkJJwltCXRoZQlnaXJsCWZvcgl5b3UJLgkuCS4JLgkuCS4JLgkuCS4JLglYT1hPCS4JLgkuCS4JLgkuCS4=" id="sentence_2">Hey fellas my name is Brianna &lt;br &gt; I ' m having problems Wit these broke bitches takin my pictures It ' s funny becuz they can never be me &lt;br &gt; Come and experience the ultimate pleasure with ME ! &lt;br &gt; I am friendly , very playful &amp; extra naughttyy &lt;br &gt; Stop wasting time w / the rest , call the best ! ã &lt;br &gt; &lt;br &gt; â ! For those of you who seek the complete package of beauty , class , and charm . . . &lt;br &gt; Then I ' m the girl for you . . . . . . . . . . XOXO . . . . . . .</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_2" elastic-search-id= "http://dig.isi.edu/sentence/FD3910F08DFD586BFFDF8FB5A2140AD0ED48B011">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 3</h1></div><div class="panel-body" id="container_3">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/A0B9AC9597851A732DD895AD3594C7AD439C2C56" tokens="SGkJLglNeQluYW1lCWlzCWAJRU1NWQkuCWAJYAlJCWFtCWEJb25lCW9mCWEJa2luZAlnaXJsCS4JTXkJcGVyc29uYWxpdHkJaXMJdG8JZGllCWZvcgksCXlvdQknCWxsCWxvdmUJdGhlCXRpbWUJd2UJc2hhcmUJLglJCWFtCU5FVwl0bwl0aGlzCWhvYmJ5CSwJWUVTCTsJJmFtcDtsdDsJQnV0CWRlZmluaXRlbHkJTk9UCW5ldwl0bwlrbm93aW5nCWhvdwl0bwlwbGVhc2UJLglJCScJbQlWRVJZCW91dGdvaW5nCWFuZAloYXZlCWEJYnVyc3RpbmcJcGVyc29uYWxpdHkJdG8JZGllCWZvcgkuCUNvbWUJYW5kCWVuam95CXlvdXIJZGF5CW1vcmUJZW5qb3lhYmxlCWJ5CWFsbG93aW5nCW1lCXRvCWxldAlnbwlvZglteQkiCUdpcmwJLQlOZXh0CS0JRG9vcgktCUltYWdlCSIJJmFtcDsJbGV0dGluZwltZQlleHBsb3JlCXRoaXMJZGVzaXJlCUkJaGF2ZQl0bwlmcmVlCW15CXdpbGQJc2lkZQkuCVhvWG8JKAk0MTQJKQk3MDIJKgkyODU0CSkJLgkmYW1wO25ic3A7CUNhbGwJJmx0O3UJJmd0Ow==" id="sentence_3">Hi . My name is ` EMMY . ` ` I am a one of a kind girl . My personality is to die for , you ' ll love the time we share . I am NEW to this hobby , YES ; &amp;lt; But definitely NOT new to knowing how to please . I ' m VERY outgoing and have a bursting personality to die for . Come and enjoy your day more enjoyable by allowing me to let go of my " Girl - Next - Door - Image " &amp; letting me explore this desire I have to free my wild side . XoXo ( 414 ) 702 * 2854 ) . &amp;nbsp; Call &lt;u &gt;</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_3" elastic-search-id= "http://dig.isi.edu/sentence/A0B9AC9597851A732DD895AD3594C7AD439C2C56">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 4</h1></div><div class="panel-body" id="container_4">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/D8BB9EB85F7726A62E7053D288873D5D2F107778" tokens="SGV5CWh1bgkuCU15CW5hbWUJaXMJS2VsbHkJYW5kCUkJJwltCXJlYWR5CXRvCWhhdmUJc29tZQlmdW4JdG9uaWdodAkuCSZsdDticgkvJmd0OwlJCWFtCTUJJwk1CXdpdGgJYQlwcmV0dHkJZmFjZQlhbmQJbmljZQlmdWxsCWxpcHMJJmx0O2JyCS8mZ3Q7CUkJYW0JcGV0aXRlCWJ1dAlteQljdXJ2ZXMJYXJlCWluCWFsbAl0aGUJcmlnaHQJcGxhY2VzCSZsdDticgkvJmd0OwlJCW1heQljb21lCW9mZglhcwliZWluZwlzaHkJYnV0CUkJYW13aGVuCWl0CScJcwl0aW1lCTsJKQkmbHQ7YnIJLyZndDsJSQlsb3ZlCWZldGlzaGVzCWp1c3QJYXMJbXVjaAlhcwl5b3UJZG8Jc28JanVzdAlhc2sJJmx0O2JyCS8mZ3Q7CU15CXBpY3MJYXJlCTEwMAklCW1lCSZsdDticgkvJmd0OwlZb3VyCXRpbWUJd2l0aAltZQlpcwkxMDAJJQl1bnJ1c2hlZAkmbHQ7YnIJLyZndDsJSQknCW0Jd2FpdGluZwlvbgl5b3VyCWNhbGwJNTE2CTMyNQkzOTkwCS4JJmFtcDtuYnNwOwlDYWxsCSZsdDt1CSZndDsJNTE2CS0JMzI1CS0JMzk5MAkmbHQ7L3UmZ3Q7" id="sentence_4">Hey hun . My name is Kelly and I ' m ready to have some fun tonight . &lt;br /&gt; I am 5 ' 5 with a pretty face and nice full lips &lt;br /&gt; I am petite but my curves are in all the right places &lt;br /&gt; I may come off as being shy but I amwhen it ' s time ; ) &lt;br /&gt; I love fetishes just as much as you do so just ask &lt;br /&gt; My pics are 100 % me &lt;br /&gt; Your time with me is 100 % unrushed &lt;br /&gt; I ' m waiting on your call 516 325 3990 . &amp;nbsp; Call &lt;u &gt; 516 - 325 - 3990 &lt;/u&gt;</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_4" elastic-search-id= "http://dig.isi.edu/sentence/D8BB9EB85F7726A62E7053D288873D5D2F107778">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 5</h1></div><div class="panel-body" id="container_5">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/72AB7F71959B29328A3CF3E16FAF1118C4CE53E7" tokens="SGVsbG8JZXZlcnlvbmUJLAlteQluYW1lCWlzCUFzaGxleQlJCWFtCTIxCXllYXJzCW9sZAkuCU15CWxvb2tzCXdpbGwJc2VkdWNlCXlvdQkuCU15CWhhbmRzCXdpbGwJYW1hemUJeW91CSZhbXA7CW15CXRpbWUJaXMJbm90aGluZwlidXQJeW91cnMJLglJCWFtCWF2YWlsYWJsZQlhbGwJbmlnaHQJLglJCWxvdmUJZ2l2aW5nCW1hc3NhZ2VzCWl0CScJcwlqdXN0CXdoYXQJSQlkbwliZXN0CS4JTXkJaGFuZHMJY2FuCW1ha2UJeW91CXNhdGlzZmllZAlpbglldmVyeQl3YXkJLglJCWFtCTEwMAklCXJlYWwJLglJCScJbQlJTkRFUEVOREVOVAkhCUkJbG92ZQloYXZpbmcJYQlnb29kCXRpbWUJJmFtcDsJSQlsb3ZlCWJlaW5nCXdpbGQJLglBcmUJeW91CXJlYWR5CXRvCWhhdmUJZnVuCUkJJwltCWF0CWEJZmFuY3kJaG90ZWwJKAlNYXJyaW90dAkpCSEJSWYJeW91CWFyZQlpbnRlcmVzdGVkCWNhbGwJb3IJdGV4dAkoCTYxOQkpCTQxMwktCTcyMDIJJmx0O2JyCS8mZ3Q7CUlOQ0FMTAlPUglPVVRDQUxMCS4=" id="sentence_5">Hello everyone , my name is Ashley I am 21 years old . My looks will seduce you . My hands will amaze you &amp; my time is nothing but yours . I am available all night . I love giving massages it ' s just what I do best . My hands can make you satisfied in every way . I am 100 % real . I ' m INDEPENDENT ! I love having a good time &amp; I love being wild . Are you ready to have fun I ' m at a fancy hotel ( Marriott ) ! If you are interested call or text ( 619 ) 413 - 7202 &lt;br /&gt; INCALL OR OUTCALL .</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_5" elastic-search-id= "http://dig.isi.edu/sentence/72AB7F71959B29328A3CF3E16FAF1118C4CE53E7">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 6</h1></div><div class="panel-body" id="container_6">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/51A62E35A6F0D7388D80EFE079E83346A4174F5A" tokens="SGVsbG8JbXkJbmFtZQlpcwlWaWN0b3JpYQlMb3ZlCSwJSQknCW0JNQkiCTQzNglkZAlicmVhc3QJd2l0aAlhCWJlYXV0aWZ1bAlzbWlsZQl4b3hvCSZsdDticgkvJmd0OwlJCWFtCWEJc3dlZXQJc2Vuc3VhbAksCWdpcmwJdmVyeQlsYWlkCWJhY2sJJmFtcDsJZ2VudWluZQkuCUkJJwltCWZsaXJ0eQkmYW1wOwlmdW4JYnV0CWRvbgknCXQJbGV0CW15CWFnZQlmb29sCXlvdQkuCUkJJwltCXZlcnkJc2VjdXJlCXdpdGgJbXlzZWxmCWluCWFuZAlvdXQJb2YJdGhlCWJlZHJvb20JLglTbwlpZgl5b3UJYXJlCWxvb2tpbmcJZm9yCWZ1bglpbglwYXJhZGlzZQl3aXRoCXRoaXMJRUJPTlkJUVVFRU4JQ0FMTAlGT1IJUkFURVMJKAkyMDYJKQk3NDcJLQk3NTgxCWFzawlmb3IJc3BlY2lhbAkuCSZsdDticgkvJmd0OwlJCScJbQlsb29raW5nCWZvcgljbGVhbglwb2xpdGUJbWVuCW9ubHkJJmx0O2JyCS8mZ3Q7CW5vCWdhbWVzCW5vCWRyYW1hCTEwMAklCXJlYWwJcGljdHVyZXMJOgkpCSZsdDticgkvJmd0OwkjCU5PCUJMQUNLCU1FTg==" id="sentence_6">Hello my name is Victoria Love , I ' m 5 " 436 dd breast with a beautiful smile xoxo &lt;br /&gt; I am a sweet sensual , girl very laid back &amp; genuine . I ' m flirty &amp; fun but don ' t let my age fool you . I ' m very secure with myself in and out of the bedroom . So if you are looking for fun in paradise with this EBONY QUEEN CALL FOR RATES ( 206 ) 747 - 7581 ask for special . &lt;br /&gt; I ' m looking for clean polite men only &lt;br /&gt; no games no drama 100 % real pictures : ) &lt;br /&gt; # NO BLACK MEN</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_6" elastic-search-id= "http://dig.isi.edu/sentence/51A62E35A6F0D7388D80EFE079E83346A4174F5A">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 7</h1></div><div class="panel-body" id="container_7">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/E96E761EABA2059384A0FD2525D33352DDD8C3B5" tokens="SGV5CUJQCUdlbnRsZW1lbgksCSZsdDticgkmZ3Q7CSZsdDticgkmZ3Q7CUl0CScJcwlCUklFTExFCWhlcmUJYW5kCUkJJwltCWRvaW5nCUlOQ0FMTFMJLwlPVVRDQUxMUwlpbgl0aGUJTm9ydGgJQmF5CWFyZWEJLglJCWFtCWEJc3dlZXQJLAlzZW5zdWFsCSZhbXA7CW91dGdvaW5nCWNvbGxlZ2UJZ2lybAl3aG8JaXMJdmVyeQlyZXNwZWN0ZnVsCWFuZAlkaXNjcmVldAkuCU15CWdvYWwJaXMJdG8JZnVmaWxsCXlvdXIJZmFudGFzaWVzCWFuZAllbmpveQllYWNob3RoZXJzCWNvbXBhbnkJLgkmbHQ7YnIJJmd0OwkmbHQ7YnIJJmd0OwlJCXdvdWxkCWxvdmUJdG8JbWVldAlzb21lCWtpbmQJJmFtcDsJcmVzcGVjdGZ1bAlnZW50bGVtZW4Jd2hpbGUJSQlhbQlvdXQJaGVyZQkuCVRoYW5rCXlvdQlmb3IJdGFraW5nCXRoZQl0aW1lCXRvCXJlYWQJbXkJdGV4dAlhbmQJaWYJeW91CWxpa2UJd2hhdAl5b3UJc2VlCWFuZAlyZWFkCSZsdDticgkmZ3Q7CUkJJwltCW9ubHkJb25lCWNhbGwJYXdheQkhCSZsdDticgkmZ3Q7CSZsdDticgkmZ3Q7CVhvWG8JLAlCcmllbGxlCSgJNgkuCTcJLgk4CSkJNg==" id="sentence_7">Hey BP Gentlemen , &lt;br &gt; &lt;br &gt; It ' s BRIELLE here and I ' m doing INCALLS / OUTCALLS in the North Bay area . I am a sweet , sensual &amp; outgoing college girl who is very respectful and discreet . My goal is to fufill your fantasies and enjoy eachothers company . &lt;br &gt; &lt;br &gt; I would love to meet some kind &amp; respectful gentlemen while I am out here . Thank you for taking the time to read my text and if you like what you see and read &lt;br &gt; I ' m only one call away ! &lt;br &gt; &lt;br &gt; XoXo , Brielle ( 6 . 7 . 8 ) 6</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_7" elastic-search-id= "http://dig.isi.edu/sentence/E96E761EABA2059384A0FD2525D33352DDD8C3B5">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 8</h1></div><div class="panel-body" id="container_8">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/B451E2EC09B12AB21169C1258E809076E1D2D0B0" tokens="SGVsbG8JR2VudGxlbWVuCSwJbXkJbmFtZQlpcwlKb3JkYW4JLglJCScJbQl5b3VuZwksCXRoaWNrCSwJJmFtcDsJc2V4eQkuCUkJaGF2ZQlEb3VibGUJRAknCXMJLAl3aGljaAltZWFucwlET1VCTEUJdGhlCWZ1bgkuCUkJJwltCWEJdG90YWwJc3dlZXRoZWFydAksCSZhbXA7d291bGQ7CWxvdmUJdG8Jc2hvdwl5b3UJanVzdAlob3cJc3dlZXQJSQlhbQkuCUkJbWF5CWJlCXlvdW5nCWJ1dAlJCScJbQltb3JlCXRoYW4JcmVhZHkJLglFYWdlcgl0bwlwbGVhc2UJeW91cglldmVyeQlkZXNpcmUJJmFtcDsJbmVlZAkuCU5ldwl0bwllcm90aWNtdWdzaG90cwlidXQJbm90CW5ldwl0bwl0aGUJZ2FtZQkuCUF2YWlsYWJsZQlub3cJc28JY2FsbAltZQlub3cJJmFtcDsJbGV0CScJcwloYXZlCXNvbWUJZnVuCU9VVENBTExTCU9OTFkJLglBbGwJZG9uYXRpb25zCXVwZnJvbnQJLglhdmFpbGFibGUJbm93CS4JTk8JYmxhY2tzCXBsZWFzZQkuCTUwOQktCTYzNQktCTcyMTIJeG94bwlKb3JkYW4JSQlvZmZlcgl2aWRlbwkvCXBob3RvCWFsc28=" id="sentence_8">Hello Gentlemen , my name is Jordan . I ' m young , thick , &amp; sexy . I have Double D ' s , which means DOUBLE the fun . I ' m a total sweetheart , &amp;would; love to show you just how sweet I am . I may be young but I ' m more than ready . Eager to please your every desire &amp; need . New to eroticmugshots but not new to the game . Available now so call me now &amp; let ' s have some fun OUTCALLS ONLY . All donations upfront . available now . NO blacks please . 509 - 635 - 7212 xoxo Jordan I offer video / photo also</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_8" elastic-search-id= "http://dig.isi.edu/sentence/B451E2EC09B12AB21169C1258E809076E1D2D0B0">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 9</h1></div><div class="panel-body" id="container_9">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/0A6B0157F33CFA62D820B5AA0A66D5C629C0459A" tokens="SGVsbG8JbXkJbmFtZQlpcwlTaGVpbGEJLAlhbmQJSQknCW0JYQlzd2VldAlkaXNjcmVldAlwbGF5bWF0ZQlpbglTYW4JRGllZ28JLglJCWFtCWFuCWV4b3RpYwlJbmRpYW4JLwlNZXhpY2FuCW1peAksCTI1CSwJNQknCTUJMTI1CWxicwl3aXRoCWEJY3VydmFjZW91cwlmaXQJYm9keQksCWEJc29mdAljaW5uYW1vbglza2luCXRvbmUJLAlwZXJreQluYXR1cmFsCWJyZWFzdHMJLglJCWVuam95CWNvbXBhbnkJb2ZhCXJlc3BlY3RmdWwJdXBzY2FsZQksCWNsZWFuCWdlbnRsZW1hbgl3aG8JZGVzZXJ2ZXMJYQlzdGFyCWxpa2UJbWUJZm9yCWhpcwlkZXNpcmUJLglJCScJbQlhdmFpbGFibGUJYXQJYWxsCXRpbWVzCS4JLgkuCURvbnQJaGVzaXRhdGUJdG8JY2FsbAlTd2VldAltb21lbnRzCWF3YWl0aW5nCS4JSQl3aWxsCW1ha2UJc3VyZQl0bwltYWtlCXRoaXMJb25lCWEJbWVtb3JhYmxlCWV4cGVyaWVuY2UJLglwYXNzaW9uYXRlCWtpc3NlcwksCVNoZWlsYQlYT1hPCTMxMAktCTQwMQktCTk0OTUJJmFtcDtndDsJLgkmbHQ7YQlocmVmPSIvbW9yZS5waHA/YXJ0aWNsZT0xNDIiCSZndDsJTWUJYW5kCW15CWZyaWVuZHMJYXJlCW9u" id="sentence_9">Hello my name is Sheila , and I ' m a sweet discreet playmate in San Diego . I am an exotic Indian / Mexican mix , 25 , 5 ' 5 125 lbs with a curvaceous fit body , a soft cinnamon skin tone , perky natural breasts . I enjoy company ofa respectful upscale , clean gentleman who deserves a star like me for his desire . I ' m available at all times . . . Dont hesitate to call Sweet moments awaiting . I will make sure to make this one a memorable experience . passionate kisses , Sheila XOXO 310 - 401 - 9495 &amp;gt; . &lt;a href="/more.php?article=142" &gt; Me and my friends are on</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_9" elastic-search-id= "http://dig.isi.edu/sentence/0A6B0157F33CFA62D820B5AA0A66D5C629C0459A">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div><div class="panel panel-primary" name="parent_container"><div class="panel-heading"><h1 class="panel-title">Sentence 10</h1></div><div class="panel-body" id="container_10">	<div class="sentence"  elastic-search-id="http://dig.isi.edu/sentence/86B7553FC759CFCC8FA2F35A650B41E98BAB9027" tokens="SGkJdGhlcmUJLAlteQluYW1lCWlzCUtFTExZCS4JJmx0O2JyCS8mZ3Q7CUkJYW0JYQlzd2VldAlwZXRpdGUJLAljbGFzc3kJLAl1cHNjYWxlCWdvZGRlc3MJd2l0aAlhbglhbWF6aW5nCWJvZHkJLgkmbHQ7YnIJLyZndDsJSQknCW0JYnJpZ2h0CSwJZnVubnkJLAlhbmQJbG92ZQl0aGUJY29tcGFueQksCWVzcGVjaWFsbHkJdGhvc2UJd2hvCWtub3cJaG93CSZsdDticgkvJmd0Owl0bwl0cmVhdAlhCWxhZHkJLglJZgl5b3UJd2lzaAl0bwllc2NhcGUJJmx0O2JyCS8mZ3Q7CXRoZQlkYXkJdG8JZGF5CXN0cmVzcwlpbgl5b3VyCWxpZmUJLAlsZXQJbWUJcGFtcGVyCXlvdQkuCSZsdDticgkvJmd0OwkqCSoJKgkqCSoJKgkqCSoJKgkqCU5FVwlHSVJMCUlOCVRIRQlBUkVBCSoJKgkqCSoJKgkqCSoJKgkqCSoJJmx0O2JyCS8mZ3Q7CUxvb2sJbm8JbW9yZQkuCS4JQ2FsbAltZQkuCSZsdDticgkvJmd0OwlYb1hvCUJFTExBCVhvWG8JKgkqCTgwNgkqCSoJNDE2" id="sentence_10">Hi there , my name is KELLY . &lt;br /&gt; I am a sweet petite , classy , upscale goddess with an amazing body . &lt;br /&gt; I ' m bright , funny , and love the company , especially those who know how &lt;br /&gt; to treat a lady . If you wish to escape &lt;br /&gt; the day to day stress in your life , let me pamper you . &lt;br /&gt; * * * * * * * * * * NEW GIRL IN THE AREA * * * * * * * * * * &lt;br /&gt; Look no more . . Call me . &lt;br /&gt; XoXo BELLA XoXo * * 806 * * 416</div> </div><div class="checkbox custom_checkbox"><label> <input type="checkbox" name= "no_annotation_10" elastic-search-id= "http://dig.isi.edu/sentence/86B7553FC759CFCC8FA2F35A650B41E98BAB9027">No annotations</label> </div><div class="panel-footer">Markup occurences of <span class="text-danger">Working Name</span>, or  <span class="text-danger">Ethnicity/Nationality/Race/Origin</span> </div> </div></form> <div class="btn_wrapper">	<button name='submit' class="submitBtn btn btn-primary"> Submit</button>	</div><div class="modal fade" id="modal_box">	<div class="modal-dialog">	<div class="modal-content"><div class="modal-header alert alert-danger modal_title_custom">	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>	<h4 class="modal-title">Please complete annotations</h4></div><div class="modal-body" id="modal-body-text"></div>	<div class="modal-footer">	<button type="button" class="btn btn-default" data-dismiss="modal">OK</button></div> </div> </div> </div> </div> </div></body></html>
